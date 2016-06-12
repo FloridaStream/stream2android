@@ -1340,10 +1340,10 @@ typedef struct AVCodecContext {
      * - encoding: Set by user.
      * - decoding: Set by user.
      * Setting this to STRICT or higher means the encoder and decoder will
-     * generally do stupid things. While setting it to inofficial or lower
+     * generally do stupid things. While setting it to unofficial or lower
      * will mean the encoder might use things that are not supported by all
      * spec compliant decoders. Decoders make no difference between normal,
-     * inofficial and experimental, that is they always try to decode things
+     * unofficial and experimental, that is they always try to decode things
      * when they can unless they are explicitly asked to behave stupid
      * (=strictly conform to the specs)
      */
@@ -1351,7 +1351,7 @@ typedef struct AVCodecContext {
 #define FF_COMPLIANCE_VERY_STRICT   2 ///< Strictly conform to a older more strict version of the spec or reference software.
 #define FF_COMPLIANCE_STRICT        1 ///< Strictly conform to all the things in the spec no matter what consequences.
 #define FF_COMPLIANCE_NORMAL        0
-#define FF_COMPLIANCE_INOFFICIAL   -1 ///< Allow inofficial extensions.
+#define FF_COMPLIANCE_INOFFICIAL   -1 ///< Allow unofficial extensions.
 #define FF_COMPLIANCE_EXPERIMENTAL -2 ///< Allow nonstandardized experimental things.
 
     /**

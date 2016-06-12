@@ -919,7 +919,7 @@ static int sab_diamond_search(MpegEncContext * s, int *best, int dmin,
     if(   best[0] < xmax && best[0] > xmin
        && best[1] < ymax && best[1] > ymin){
         int d;
-        //ensure that the refernece samples for hpel refinement are in the map
+        //ensure that the references samples for hpel refinement are in the map
         CHECK_MV(best[0]-1, best[1])
         CHECK_MV(best[0]+1, best[1])
         CHECK_MV(best[0], best[1]-1)

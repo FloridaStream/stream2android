@@ -432,7 +432,7 @@ static inline int get16(const uint8_t **pp, const uint8_t *p_end)
     return c;
 }
 
-/* read and allocate a DVB string preceeded by its length */
+/* read and allocate a DVB string preceded by its length */
 static char *getstr8(const uint8_t **pp, const uint8_t *p_end)
 {
     int len;

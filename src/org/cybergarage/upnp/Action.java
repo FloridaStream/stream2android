@@ -395,7 +395,7 @@ public class Action
         try {
             actionArgList.setResArgs(outArgList);
         } catch (IllegalArgumentException ex){
-            setStatus(UPnPStatus.INVALID_ARGS,"Action succesfully delivered but invalid arguments returned.");
+            setStatus(UPnPStatus.INVALID_ARGS,"Action successfully delivered but invalid arguments returned.");
             return false;
         }
 		return true;

@@ -1207,7 +1207,7 @@ static uint_fast8_t vorbis_floor1_decode(vorbis_context *vc,
         if (highroom < lowroom) {
             room = highroom * 2;
         } else {
-            room = lowroom * 2;   // SPEC mispelling
+            room = lowroom * 2;   // SPEC misspelling
         }
         if (val) {
             floor1_flag[low_neigh_offs]  = 1;

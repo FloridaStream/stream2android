@@ -154,7 +154,7 @@ static int tgv_decode_inter(TgvContext * s, const uint8_t *buf, const uint8_t *b
     vector_bits       = AV_RL16(&buf[6]);
     buf += 12;
 
-    /* allocate codebook buffers as neccessary */
+    /* allocate codebook buffers as necessary */
     if (num_mvs > s->num_mvs) {
         s->mv_codebook = av_realloc(s->mv_codebook, num_mvs*2*sizeof(int));
         s->num_mvs = num_mvs;

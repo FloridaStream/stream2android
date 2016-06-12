@@ -279,7 +279,7 @@ static void psy_3gpp_analyze(FFPsyContext *ctx, int channel,
             ctx->psy_bands[channel*PSY_MAX_BANDS+w+g].energy = band->energy;
         }
     }
-    //modify thresholds - spread, threshold in quiet - 5.4.3 "Spreaded Energy Calculation"
+    //modify thresholds - spread, threshold in quiet - 5.4.3 "Spread Energy Calculation"
     for (w = 0; w < wi->num_windows*16; w += 16) {
         Psy3gppBand *band = &pch->band[w];
         for (g = 1; g < num_bands; g++)

@@ -570,7 +570,7 @@ public class main extends ListActivity implements OnCompletionListener, KeyListe
 						if (media.image == null && ImageUrl != "")
 						{
 							// no image but we do have an image-url
-							// retreive image from this url
+							// retrieve image from this url
 							Bitmap bmImg;
 							URL myFileUrl = null;          
 						  	try {
@@ -616,7 +616,7 @@ public class main extends ListActivity implements OnCompletionListener, KeyListe
 						// do we have an image?
 						if (media.image == null)
 						{
-							// no, retreive image from video-stream
+							// no, retrieve image from video-stream
 							// capture stream to disk 
 							boolean couldConnect = false;
 		

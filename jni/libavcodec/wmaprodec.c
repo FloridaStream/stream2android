@@ -516,7 +516,7 @@ static int decode_tilehdr(WMAProDecodeCtx *s)
     int c;
 
     /* Should never consume more than 3073 bits (256 iterations for the
-     * while loop when always the minimum amount of 128 samples is substracted
+     * while loop when always the minimum amount of 128 samples is subtracted
      * from missing samples in the 8 channel case).
      * 1 + BLOCK_MAX_SIZE * MAX_CHANNELS / BLOCK_MIN_SIZE * (MAX_CHANNELS  + 4)
      */

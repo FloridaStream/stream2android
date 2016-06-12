@@ -197,7 +197,7 @@ public class Node
 	}
 
 	////////////////////////////////////////////////
-	//	Attribute (Extention)
+	//	Attribute (Extension)
 	////////////////////////////////////////////////
 
 	public void setAttribute(String name, String value) {
