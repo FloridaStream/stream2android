@@ -177,7 +177,7 @@ typedef struct {
      * @{
      */
     int spillover_nbits;          ///< number of bits of the previous packet's
-                                  ///< last superframe preceeding this
+                                  ///< last superframe preceding this
                                   ///< packet's first full superframe (useful
                                   ///< for re-synchronization also)
     int has_residual_lsps;        ///< if set, superframes contain one set of

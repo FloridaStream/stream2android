@@ -43,7 +43,7 @@
  *
  * Encoding ideas, a basic encoder would just use a fixed block size.
  * Block sizes can be multipels of 16, from 16 to 256. The blocks don't
- * have to be quadratic. A brute force search with a set of diffrent
+ * have to be quadratic. A brute force search with a set of different
  * block sizes should give a better result then to just use a fixed size.
  */
 

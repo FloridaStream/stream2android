@@ -47,7 +47,7 @@ typedef struct {
     int seq_p;
     int lookup;
     int *quantlist;
-    float *dimentions;
+    float *dimensions;
     float *pow2;
 } vorbis_enc_codebook;
 
@@ -135,12 +135,12 @@ static inline void put_codeword(PutBitContext *pb, vorbis_enc_codebook *cb,
     put_bits(pb, cb->lens[entry], cb->codewords[entry]);
 }
 
-static int cb_lookup_vals(int lookup, int dimentions, int entries)
+static int cb_lookup_vals(int lookup, int dimensions, int entries)
 {
     if (lookup == 1)
-        return ff_vorbis_nth_root(entries, dimentions);
+        return ff_vorbis_nth_root(entries, dimensions);
     else if (lookup == 2)
-        return dimentions *entries;
+        return dimensions *entries;
     return 0;
 }
 
@@ -151,10 +151,10 @@ static void ready_codebook(vorbis_enc_codebook *cb)
     ff_vorbis_len2vlc(cb->lens, cb->codewords, cb->nentries);
 
     if (!cb->lookup) {
-        cb->pow2 = cb->dimentions = NULL;
+        cb->pow2 = cb->dimensions = NULL;
     } else {
         int vals = cb_lookup_vals(cb->lookup, cb->ndimentions, cb->nentries);
-        cb->dimentions = av_malloc(sizeof(float) * cb->nentries * cb->ndimentions);
+        cb->dimensions = av_malloc(sizeof(float) * cb->nentries * cb->ndimentions);
         cb->pow2 = av_mallocz(sizeof(float) * cb->nentries);
         for (i = 0; i < cb->nentries; i++) {
             float last = 0;
@@ -167,10 +167,10 @@ static void ready_codebook(vorbis_enc_codebook *cb)
                 else
                     off = i * cb->ndimentions + j; // lookup type 2
 
-                cb->dimentions[i * cb->ndimentions + j] = last + cb->min + cb->quantlist[off] * cb->delta;
+                cb->dimensions[i * cb->ndimentions + j] = last + cb->min + cb->quantlist[off] * cb->delta;
                 if (cb->seq_p)
-                    last = cb->dimentions[i * cb->ndimentions + j];
-                cb->pow2[i] += cb->dimentions[i * cb->ndimentions + j] * cb->dimentions[i * cb->ndimentions + j];
+                    last = cb->dimensions[i * cb->ndimentions + j];
+                cb->pow2[i] += cb->dimensions[i * cb->ndimentions + j] * cb->dimensions[i * cb->ndimentions + j];
                 div *= vals;
             }
             cb->pow2[i] /= 2.;
@@ -199,10 +199,10 @@ static void ready_residue(vorbis_enc_residue *rc, vorbis_enc_context *venc)
             float a;
             if (!cb->lens[j])
                 continue;
-            a = fabs(cb->dimentions[j * cb->ndimentions]);
+            a = fabs(cb->dimensions[j * cb->ndimentions]);
             if (a > rc->maxes[i][0])
                 rc->maxes[i][0] = a;
-            a = fabs(cb->dimentions[j * cb->ndimentions + 1]);
+            a = fabs(cb->dimensions[j * cb->ndimentions + 1]);
             if (a > rc->maxes[i][1])
                 rc->maxes[i][1] = a;
         }
@@ -782,9 +782,9 @@ static float *put_vector(vorbis_enc_codebook *book, PutBitContext *pb,
 {
     int i, entry = -1;
     float distance = FLT_MAX;
-    assert(book->dimentions);
+    assert(book->dimensions);
     for (i = 0; i < book->nentries; i++) {
-        float * vec = book->dimentions + i * book->ndimentions, d = book->pow2[i];
+        float * vec = book->dimensions + i * book->ndimentions, d = book->pow2[i];
         int j;
         if (!book->lens[i])
             continue;
@@ -796,7 +796,7 @@ static float *put_vector(vorbis_enc_codebook *book, PutBitContext *pb,
         }
     }
     put_codeword(pb, book, entry);
-    return &book->dimentions[entry * book->ndimentions];
+    return &book->dimensions[entry * book->ndimentions];
 }
 
 static void residue_encode(vorbis_enc_context *venc, vorbis_enc_residue *rc,
@@ -1041,7 +1041,7 @@ static av_cold int vorbis_encode_close(AVCodecContext *avccontext)
             av_freep(&venc->codebooks[i].lens);
             av_freep(&venc->codebooks[i].codewords);
             av_freep(&venc->codebooks[i].quantlist);
-            av_freep(&venc->codebooks[i].dimentions);
+            av_freep(&venc->codebooks[i].dimensions);
             av_freep(&venc->codebooks[i].pow2);
         }
     av_freep(&venc->codebooks);

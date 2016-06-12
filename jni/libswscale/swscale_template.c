@@ -2212,7 +2212,7 @@ static inline void RENAME(hScale)(int16_t *dst, int dstW, const uint8_t *src, in
 #endif /* COMPILE_MMX */
 }
 
-//FIXME all pal and rgb srcFormats could do this convertion as well
+//FIXME all pal and rgb srcFormats could do this conversion as well
 //FIXME all scalers more complex than bilinear could do half of this transform
 static void RENAME(chrRangeToJpeg)(uint16_t *dst, int width)
 {

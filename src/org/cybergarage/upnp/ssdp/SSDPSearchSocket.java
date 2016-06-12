@@ -22,7 +22,7 @@
 *		- Thanks for Kazuyuki Shudo
 * 		- Changed run() to catch IOException of HTTPMUSocket::receive().
 *	01/10/08
-*		- Changed start() not to abort when the interface infomation is null on Android m3-rc37a.
+*		- Changed start() not to abort when the interface information is null on Android m3-rc37a.
 *	
 ******************************************************************/
 

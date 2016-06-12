@@ -65,7 +65,7 @@ struct FrameMode {
  * bitrate/sample rate
  */
 typedef struct {
-    struct FrameMode fmode[3]; ///< frame type-dependant parameters
+    struct FrameMode fmode[3]; ///< frame type-dependent parameters
 
     uint16_t     size;        ///< frame size in samples
     uint8_t      n_lsp;       ///< number of lsp coefficients

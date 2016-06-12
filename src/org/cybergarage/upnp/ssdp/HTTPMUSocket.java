@@ -140,7 +140,7 @@ public class HTTPMUSocket
 	 * @param addr {@link String} rappresenting the multicast hostname to join into.
 	 * @param port int rappresenting the port to be use poth as source and destination
 	 * @param bindAddr {@link InetAddress} which identify the hostname of the interface 
-	 * 		to use for sending and recieving multicast packet
+	 * 		to use for sending and receiving multicast packet
 	 */
 	public boolean open(String addr,int port, InetAddress bindAddr){
 		try {
